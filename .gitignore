@@ -49,6 +49,18 @@ logs/
 *~
 .DS_Store
 
+# Test and setup files (deprecated)
+testsql.txt
+sqlcode.txt
+GITHUB_SETUP_COMPLETE.md
+QUICK_START_GITHUB.md
+RESTRUCTURING_SUMMARY.md
+PROJECT_STATUS_REPORT.md
+
+# Loose database files (use src/main/resources/db/ instead)
+library_db.sql
+test_db.sql
+
 # Database
 *.db
 *.sqlite
