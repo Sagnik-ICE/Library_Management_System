@@ -49,6 +49,12 @@ logs/
 *~
 .DS_Store
 
+# Deprecated setup documentation
+GITHUB_SETUP_COMPLETE.md
+QUICK_START_GITHUB.md
+RESTRUCTURING_SUMMARY.md
+PROJECT_STATUS_REPORT.md
+
 # Database
 *.db
 *.sqlite
