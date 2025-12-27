@@ -1,260 +1,320 @@
-﻿# Library Management System
+﻿# 📚 Library Management System
 
-A comprehensive Java-based Library Management System with a modern GUI built using Swing and MySQL database backend. This enterprise-grade application provides complete library operations management including inventory tracking, member administration, book issuance/returns, and fine management.
+[![Java](https://img.shields.io/badge/Java-17%2B-orange.svg)](https://www.oracle.com/java/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-blue.svg)](https://www.mysql.com/)
+[![Maven](https://img.shields.io/badge/Maven-3.8%2B-red.svg)](https://maven.apache.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-##  Overview
+A modern, enterprise-grade Library Management System built with Java Swing and MySQL. Features a professional UI, role-based access control, and comprehensive library operations management.
 
-Library Management System is a full-featured desktop application designed to streamline library operations. It provides role-based access (Admin and User) with comprehensive features for managing books, members, transactions, and fines. The system ensures data integrity through ACID transactions and implements industry-standard security practices.
+![Library Management System](Images/Effective%20Java.jpg)
 
-##  Features
+## ✨ Features
 
-###  Book Management
-- **Add Books**: Add new books with title, author, and quantity
-- **View Books**: Display all books in inventory with details
-- **Search Books**: Search by ID or title
-- **Update Books**: Modify book information and quantity
-- **Delete Books**: Remove books from inventory
+### 📖 Book Management
+- **CRUD Operations**: Complete book lifecycle management
+- **Advanced Search**: Search by ISBN, title, author, or genre
+- **Inventory Tracking**: Real-time quantity monitoring
+- **Detailed Cataloging**: ISBN, publisher, price, and descriptions
 
-###  Member Management
-- **Add Members**: Register new library members with contact info
-- **View Members**: Display all registered members
-- **Search Members**: Find members by name or email
-- **Update Members**: Modify member information
-- **Deactivate/Reactivate**: Manage member account status
-- **Status Validation**: Prevent deactivation if books are issued or fines pending
+### 👥 Member Management
+- **Member Registration**: Comprehensive profile management
+- **Status Control**: Active/Inactive member states
+- **Contact Management**: Email and phone validation
+- **Profile Pictures**: Image upload support
 
-###  Book Operations
-- **Issue Books**: Issue books to active members with duplicate prevention
-- **Return Books**: Process returns and auto-calculate fines
-- **Track Issues**: View all issued books with status
-- **Fine Management**: Track and manage overdue fines
+### 🔄 Transaction Management
+- **Book Issuance**: Automated validation and due date calculation
+- **Returns Processing**: Smart fine calculation (₹10/day overdue)
+- **Transaction History**: Complete audit trail
+- **Fine Management**: Payment tracking and status updates
 
-###  Authentication & Authorization
-- **Secure Login**: Role-based login system (Admin/User)
-- **Admin Panel**: Full administrative capabilities
-- **User Interface**: Limited user access for issuing/returning books
+### 🔐 Security & Authentication
+- **BCrypt Password Hashing**: Industry-standard security
+- **Role-Based Access**: Admin and User roles
+- **Session Management**: Secure authentication flow
+- **Auto-Password Upgrade**: Plain text to BCrypt migration
 
-##  Technology Stack
+### 🎨 Modern UI/UX
+- **Professional Login**: Split-screen design with gradient branding
+- **Responsive Design**: Clean, intuitive interfaces
+- **Focus Effects**: Visual feedback on user interactions
+- **Show/Hide Password**: Enhanced usability
 
-| Component | Technology |
-|-----------|-----------|
-| **Language** | Java 8+ |
-| **GUI Framework** | Swing (MVC Architecture) |
-| **Database** | MySQL 5.7+ |
-| **Database Driver** | MySQL Connector/J |
-| **Build Tool** | Maven (optional) |
+## 🛠️ Technology Stack
 
-##  Project Structure
+| Component | Technology | Version |
+|-----------|-----------|---------|
+| **Language** | Java | 17+ LTS |
+| **GUI Framework** | Swing | Built-in |
+| **Database** | MySQL | 8.0+ |
+| **Connection Pool** | HikariCP | 5.1.0 |
+| **Password Hashing** | BCrypt | 0.10.2 |
+| **Logging** | SLF4J + Logback | 2.0.9 |
+| **Build Tool** | Maven | 3.8+ |
 
-\\\
+## 📁 Project Structure
+
+```
 Library_Management_System/
- src/main/java/com/librarymgmt/
-    Main.java                          # Entry point
-    config/
-       DBConnection.java              # Database configuration
-    ui/
-        admin/                         # Admin UI components (16 classes)
-           AddBook.java
-           ViewBooks.java
-           SearchBook.java
-           UpdateBook.java
-           DeleteBook.java
-           AddMember.java
-           ViewMembers.java
-           SearchMember.java
-           UpdateMember.java
-           DeactivateMember.java
-           ReactivateMember.java
-           IssueBook.java
-           ReturnBook.java
-           ViewIssuedBooks.java
-           ViewFines.java
-           AdminMenu.java
-        user/
-           UserMenu.java              # User UI
-        auth/
-            LoginPage.java             # Authentication
- src/main/resources/
-    db/
-        library_db.sql                 # Database schema
-        test_db.sql                    # Test data
- docs/
-    INSTALLATION.md                    # Setup guide
-    DATABASE.md                        # Database documentation
-    CONTRIBUTING.md                    # Contribution guidelines
-    PROJECT_STATUS_REPORT.md           # Project details
- LICENSE                                # MIT License
- README.md                              # This file
-\\\
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── book/              # Book management
+│   │   │   │   ├── AddBook.java
+│   │   │   │   ├── ViewBooks.java
+│   │   │   │   ├── SearchBook.java
+│   │   │   │   ├── UpdateBook.java
+│   │   │   │   └── DeleteBook.java
+│   │   │   ├── member/            # Member management
+│   │   │   │   ├── AddMember.java
+│   │   │   │   ├── ViewMembers.java
+│   │   │   │   ├── SearchMember.java
+│   │   │   │   ├── UpdateMember.java
+│   │   │   │   ├── DeactivateMember.java
+│   │   │   │   └── ReactivateMember.java
+│   │   │   ├── transaction/       # Transaction management
+│   │   │   │   ├── IssueBook.java
+│   │   │   │   ├── ReturnBook.java
+│   │   │   │   ├── ViewIssuedBooks.java
+│   │   │   │   ├── ViewReturnedBooks.java
+│   │   │   │   └── ViewFines.java
+│   │   │   ├── login/             # Authentication
+│   │   │   │   ├── LoginPage.java
+│   │   │   │   ├── AdminMenu.java
+│   │   │   │   └── UserMenu.java
+│   │   │   ├── database/          # Database layer
+│   │   │   │   └── DBConnection.java
+│   │   │   ├── models/            # Data models
+│   │   │   │   ├── Book.java
+│   │   │   │   └── Member.java
+│   │   │   ├── utils/             # Utilities
+│   │   │   │   ├── ConfigManager.java
+│   │   │   │   ├── Constants.java
+│   │   │   │   ├── PasswordUtil.java
+│   │   │   │   ├── ValidationUtil.java
+│   │   │   │   └── exceptions/
+│   │   │   │       ├── DatabaseException.java
+│   │   │   │       ├── LibraryException.java
+│   │   │   │       └── ValidationException.java
+│   │   │   └── com/library/management/  # Enterprise architecture (Future)
+│   │   │       ├── domain/        # Domain entities
+│   │   │       ├── repository/    # Repository pattern
+│   │   │       └── infrastructure/ # Infrastructure layer
+│   │   └── resources/
+│   │       ├── application.properties  # Configuration
+│   │       ├── logback.xml            # Logging config
+│   │       └── db/
+│   │           ├── library_db.sql     # Database schema
+│   │           └── test_db.sql        # Sample data
+│   └── test/                      # Unit tests (Future)
+├── docs/                          # Documentation
+│   ├── INSTALLATION.md
+│   ├── DATABASE.md
+│   └── CONTRIBUTING.md
+├── Images/                        # UI Assets
+├── target/                        # Build output
+├── logs/                          # Application logs
+├── pom.xml                        # Maven configuration
+├── start.bat                      # Windows launcher
+├── start.sh                       # Linux/Mac launcher
+├── DEPLOYMENT.md                  # Deployment guide
+├── DEVELOPER_GUIDE.md             # Developer documentation
+├── LICENSE                        # MIT License
+└── README.md                      # This file
+```
 
-##  Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
-- **Java Development Kit (JDK)** 8 or higher
-- **MySQL Server** 5.7 or higher
-- **MySQL JDBC Driver** (mysql-connector-java.jar)
-- **Git** (for cloning the repository)
+- **Java 17+** (LTS recommended)
+- **MySQL 8.0+**
+- **Maven 3.8+** (or use included wrapper)
 
 ### Installation
 
 1. **Clone the Repository**
-   \\\ash
+   ```bash
    git clone https://github.com/Sagnik-ICE/Library_Management_System.git
    cd Library_Management_System
-   \\\
+   ```
 
-2. **Setup Database**
-   \\\ash
-   mysql -u root -p < src/main/resources/db/library_db.sql
-   \\\
-
-3. **Configure Database Credentials**
+2. **Configure Database**
    
-   Edit \src/main/java/com/librarymgmt/config/DBConnection.java\:
-   \\\java
-   private static final String URL = "jdbc:mysql://localhost:3306/library_db";
-   private static final String USER = "root";                    // Your MySQL username
-   private static final String PASSWORD = "your_password";      // Your MySQL password
-   \\\
+   Edit `src/main/resources/application.properties`:
+   ```properties
+   db.url=jdbc:mysql://localhost:3306/library_db
+   db.username=root
+   db.password=your_password
+   ```
 
-4. **Download MySQL JDBC Driver**
-   - Download from: [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)
-   - Place in project directory or add to classpath
+3. **Setup Database Schema**
+   ```bash
+   # Create schema and tables
+   mysql -u root -p < src/main/resources/db/library_db.sql
+   
+   # Load sample data (optional)
+   mysql -u root -p < src/main/resources/db/test_db.sql
+   ```
 
-5. **Compile the Project**
-   \\\ash
-   javac -d out -cp "mysql-connector-java-8.0.33.jar" ^
-     src/main/java/com/librarymgmt/**/*.java
-   \\\
+4. **Build the Project**
+   ```bash
+   mvn clean package -DskipTests
+   ```
 
-6. **Run the Application**
-   \\\ash
-   java -cp "out;mysql-connector-java-8.0.33.jar" ^
-     com.librarymgmt.ui.auth.LoginPage
-   \\\
+5. **Run the Application**
+   
+   **Windows:**
+   ```bash
+   start.bat
+   ```
+   
+   **Linux/Mac:**
+   ```bash
+   ./start.sh
+   ```
+   
+   **Or manually:**
+   ```bash
+   java -jar target/library-management-system-2.0.0.jar
+   ```
 
-##  Default Credentials
+## 🔑 Default Credentials
 
-After database setup, use these credentials to log in:
+| Role | Username | Password | Access Level |
+|------|----------|----------|--------------|
+| **Admin** | `admin` | `admin123` | Full system access |
+| **User** | `john` | `john123` | Limited access |
+| **User** | `jane` | `jane123` | Limited access |
 
-| Field | Value |
-|-------|-------|
-| **Username** | admin |
-| **Password** | admin123 |
-| **Role** | Admin |
+## 📖 Usage Guide
 
-##  Database Schema
+### Admin Functions
+- ✅ Complete book and member management
+- ✅ Issue and return books for any member
+- ✅ View all transactions and fines
+- ✅ Manage member accounts (activate/deactivate)
+- ✅ Full system administration
 
-### Core Tables
+### User Functions
+- ✅ View issued books
+- ✅ Check fines and payment status
+- ✅ View personal transaction history
+- ❌ Cannot issue/return books (admin only)
+- ❌ Cannot manage other members
 
-| Table | Purpose | Key Fields |
-|-------|---------|-----------|
-| **books** | Book inventory | \ook_id\, \	itle\, \uthor\, \isbn\, \quantity\, \vailable\ |
-| **members** | Member records | \member_id\, \
-ame\, \email\, \phone\, \status\ |
-| **issued_books** | Book issuance tracking | \issue_id\, \ook_id\, \member_id\, \issue_date\, \due_date\ |
-| **fines** | Fine management | \ine_id\, \member_id\, \mount\, \eason\, \paid_status\ |
-| **login** | Authentication | \user_id\, \username\, \password\, \ole\ |
-| **return_logs** | Return audit trail | \log_id\, \issue_id\, \eturn_date\, \condition\ |
+## 🗄️ Database Schema
 
-### Business Rules
+The system uses 6 main tables:
 
-| Rule | Details |
-|------|---------|
-| **Loan Period** | 14 days grace period |
-| **Fine Rate** | 10 per day after grace period |
-| **Duplicate Prevention** | Same member cannot issue same book twice without return |
-| **Deactivation Rules** | Cannot deactivate members with unreturned books or pending fines |
+- **books** - Book inventory with ISBN, author, genre, quantity
+- **members** - Member profiles with contact info and status
+- **users** - Authentication with BCrypt hashed passwords
+- **issued_books** - Active book issuances with due dates
+- **returned_books** - Historical returns with fine calculations
+- **fines** - Fine records with payment tracking
 
-##  Package Architecture
+See [DATABASE.md](docs/DATABASE.md) for complete schema documentation.
 
-\\\
-com.librarymgmt                  - Main entry point (Main.java)
- com.librarymgmt.config      - Configuration (DBConnection.java)
- com.librarymgmt.ui.admin    - Admin components (16 classes)
- com.librarymgmt.ui.user     - User components (UserMenu.java)
- com.librarymgmt.ui.auth     - Authentication (LoginPage.java)
- com.librarymgmt.utils       - Utilities (reserved for future)
-\\\
+## 📚 Documentation
 
-##  Security Features
+- **[Installation Guide](docs/INSTALLATION.md)** - Detailed setup instructions
+- **[Database Documentation](docs/DATABASE.md)** - Schema and query reference
+- **[Developer Guide](DEVELOPER_GUIDE.md)** - Development guidelines
+- **[Deployment Guide](DEPLOYMENT.md)** - Production deployment
+- **[Contributing](docs/CONTRIBUTING.md)** - Contribution guidelines
 
-- **SQL Injection Prevention**: All database queries use prepared statements
-- **Error Handling**: Comprehensive try-catch blocks with user-friendly messages
-- **Input Validation**: All user inputs validated before processing
-- **Transaction Support**: Critical operations use database transactions with rollback
-- **Role-Based Access**: Separate admin and user interfaces
-- **Credential Management**: Passwords stored in database (consider bcrypt hashing in production)
+## 🔧 Development
 
-##  Architecture & Design Patterns
+### Building from Source
+```bash
+# Clean and compile
+mvn clean compile
 
-- **MVC Pattern**: Separation of UI, business logic, and data access
-- **Singleton Pattern**: Database connection management
-- **Factory Pattern**: UI component creation
-- **Try-with-Resources**: Automatic resource management for database connections
+# Run tests
+mvn test
 
-##  Testing & Validation
+# Package application
+mvn package
 
-### Test Data
-- Sample database with test books, members, and transactions included
-- Test credentials provided in default credentials section
-- Comprehensive validation for all operations
+# Skip tests during package
+mvn package -DskipTests
+```
 
-### Error Handling
-- User-friendly error messages in dialog boxes
-- Detailed logging for debugging
-- Graceful handling of database connection failures
+### Code Structure
+- **MVC Pattern**: Clear separation of concerns
+- **Repository Pattern**: Database abstraction (in progress)
+- **Exception Handling**: Custom exception hierarchy
+- **Logging**: SLF4J with Logback configuration
+- **Connection Pooling**: HikariCP for performance
 
-##  Future Enhancements
+## 🐛 Troubleshooting
 
-- [ ] ORM Framework Integration (Hibernate)
-- [ ] Connection Pooling (HikariCP)
-- [ ] Advanced Logging System (Log4j)
-- [ ] Email Notifications for Due Books
-- [ ] Report Generation (PDF/Excel)
-- [ ] REST API Backend
-- [ ] Modern Web UI (React/Angular)
-- [ ] Barcode Scanner Support
-- [ ] Mobile Application
+### Database Connection Issues
+```bash
+# Check MySQL service is running
+mysql -u root -p
 
-##  Contributing
+# Verify database exists
+SHOW DATABASES;
 
-Contributions are welcome! Please follow these steps:
+# Check configuration
+cat src/main/resources/application.properties
+```
+
+### Build Failures
+```bash
+# Clean Maven cache
+mvn clean
+
+# Update dependencies
+mvn dependency:purge-local-repository
+
+# Rebuild
+mvn package -DskipTests
+```
+
+See [INSTALLATION.md](docs/INSTALLATION.md) for more troubleshooting tips.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines.
 
 1. Fork the repository
-2. Create a feature branch (\git checkout -b feature/AmazingFeature\)
-3. Commit your changes (\git commit -m 'Add some AmazingFeature'\)
-4. Push to the branch (\git push origin feature/AmazingFeature\)
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-##  License
+## 📋 Roadmap
+
+- [ ] REST API backend
+- [ ] Web-based frontend (React/Angular)
+- [ ] Mobile application
+- [ ] Barcode scanning integration
+- [ ] Email notifications
+- [ ] Report generation (PDF)
+- [ ] Multi-language support
+- [ ] Cloud deployment support
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-##  Support & Contact
+## 👤 Author
 
-For issues, questions, or suggestions:
-- Open an issue on [GitHub Issues](https://github.com/Sagnik-ICE/Library_Management_System/issues)
-- Check existing documentation in the \docs/\ folder
-- Review the [INSTALLATION.md](docs/INSTALLATION.md) for troubleshooting
+**Sagnik**
+- GitHub: [@Sagnik-ICE](https://github.com/Sagnik-ICE)
+- Repository: [Library_Management_System](https://github.com/Sagnik-ICE/Library_Management_System)
 
-##  Author & Contributors
+## 🙏 Acknowledgments
 
-**Development Team**: Library Management System Development Team
-
-Special thanks to all contributors who have helped improve this project.
-
-##  Changelog
-
-### Version 1.0.0 (Current Release)
--  Initial release with complete core functionality
--  GUI built with Swing framework
--  MySQL database integration
--  Admin and user role-based access
--  Professional repository structure
--  Comprehensive documentation
--  MIT License
+- Java Swing for GUI framework
+- MySQL for reliable database
+- HikariCP for connection pooling
+- BCrypt for password security
+- SLF4J & Logback for logging
 
 ---
 
-**Last Updated**: 2024 | **Status**: Active Development | **Java Version**: 8+
+⭐ If you find this project useful, please consider giving it a star!
